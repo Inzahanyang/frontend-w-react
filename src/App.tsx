@@ -15,7 +15,6 @@ function App() {
     <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
       <GlobalStyles />
       <Router>
-        the
         <Switch>
           <Route path="/" exact>
             {isLoggedIn ? <Home /> : <Login />}
