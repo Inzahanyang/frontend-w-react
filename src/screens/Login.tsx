@@ -1,54 +1,49 @@
+import {
+  faFacebookSquare,
+  faInstagram,
+} from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
+import AuthLayout from "../components/auth/AuthLayout";
+import BottomBox from "../components/auth/BottomBox";
+import Button from "../components/auth/Button";
+import FormBox from "../components/auth/FormBox";
+import Input from "../components/auth/Input";
+import Separator from "../components/auth/Separator";
+import routes from "../routes";
 
-const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-`;
-
-const WhiteBox = styled.div`
-  background-color: white;
-  border: 1px solid rgb(219, 219, 219);
-`;
-
-const TopBox = styled(WhiteBox)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+const FacebookLogin = styled.div`
+  color: #325285;
+  span {
+    margin-left: 10px;
+    font-weight: 600;
   }
-`;
-const BottomBox = styled(WhiteBox)`
-  padding: 20px 0;
-  text-align: center;
 `;
 
 const Login = () => {
   return (
-    <Container>
-      <div>
-        <TopBox>
-          <h1>Instagram</h1>
-          <form action="">
-            <input type="text" placeholder="username" />
-            <input type="password" placeholder="Password" />
-            <input type="submit" value="Log In" />
-          </form>
-          <span>Or</span>
+    <AuthLayout>
+      <FormBox>
+        <div>
+          <FontAwesomeIcon icon={faInstagram} size="3x" />
+        </div>
+        <form>
+          <Input type="text" placeholder="Username" />
+          <Input type="password" placeholder="Password" />
+          <Button type="submit" value="Log in" />
+        </form>
+        <Separator />
+        <FacebookLogin>
+          <FontAwesomeIcon icon={faFacebookSquare} />
           <span>Log in with Facebook</span>
-        </TopBox>
-        <BottomBox>
-          <span>Don't have an account?</span>
-          <a href="#">Sign up</a>
-        </BottomBox>
-      </div>
-    </Container>
+        </FacebookLogin>
+      </FormBox>
+      <BottomBox
+        cta="Don't have an account?"
+        link={routes.signUp}
+        linkText="Sign Up"
+      />
+    </AuthLayout>
   );
 };
 
