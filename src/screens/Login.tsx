@@ -27,12 +27,10 @@ const FacebookLogin = styled.div`
     font-weight: 600;
   }
 `;
-
 const Notification = styled.div`
   color: #1dd1a1;
   margin-top: 5px;
 `;
-
 const LOGIN_MUTATION = gql`
   mutation login($username: String!, $password: String!) {
     login(username: $username, password: $password) {
@@ -42,13 +40,11 @@ const LOGIN_MUTATION = gql`
     }
   }
 `;
-
 interface LocationState {
   message: string;
   username: string;
   password: string;
 }
-
 type IProps = {
   username: string;
   password: string;
@@ -90,12 +86,10 @@ const Login = () => {
 
   const [login, { loading }] = useMutation<login, loginVariables>(
     LOGIN_MUTATION,
-    {
-      onCompleted,
-    }
+    { onCompleted }
   );
 
-  const onSubmitValid: SubmitHandler<IProps> = (data) => {
+  const onSubmitValid: SubmitHandler<IProps> = () => {
     if (loading) {
       return;
     }
